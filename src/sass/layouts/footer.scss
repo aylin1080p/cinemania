@@ -1,0 +1,94 @@
+/**
+ * Header Layout
+ * =============
+ * Main header navigation styles
+ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $color-white;
+  box-shadow: $shadow-md;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-surface;
+  }
+}
+
+.header__container {
+  @extend %container;
+  @include flex-between;
+  padding: $spacing-md;
+}
+
+.header__logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  text-decoration: none;
+  @include animate(color);
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+.header__nav {
+  display: none;
+
+  @include respond-to('md') {
+    display: flex;
+    gap: $spacing-lg;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.header__nav-item {
+  @include flex-center;
+}
+
+.header__nav-link {
+  @extend %link;
+  font-weight: $font-weight-medium;
+  color: $color-gray-700;
+
+  [data-theme='dark'] & {
+    color: $color-gray-300;
+  }
+
+  &:hover,
+  &.active {
+    color: $color-primary;
+  }
+}
+
+.header__menu-toggle {
+  @include button-reset;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  cursor: pointer;
+
+  @include respond-to('md') {
+    display: none;
+  }
+
+  span {
+    width: 24px;
+    height: 2px;
+    background-color: $color-gray-700;
+    border-radius: 1px;
+    @include animate(background-color);
+
+    [data-theme='dark'] & {
+      background-color: $color-gray-300;
+    }
+  }
+
+  &:hover span {
+    background-color: $color-primary;
+  }
+}

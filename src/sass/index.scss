@@ -1,0 +1,41 @@
+/**
+ * Main SCSS Entry Point
+ * ====================
+ * Imports all SCSS partials in correct order
+ * Keep these imports at the top level
+ */
+
+// ==================== VARIABLES & UTILITIES ====================
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/placeholders';
+
+// ==================== BASE STYLES ====================
+@import './base/reset';
+@import './base/typography';
+@import './base/colors';
+
+// ==================== LAYOUTS ====================
+@import './layouts/container';
+@import './layouts/grid';
+@import './layouts/flexbox';
+@import './layouts/header';
+@import './layouts/footer';
+
+// ==================== COMPONENTS ====================
+@import './components/buttons';
+@import './components/cards';
+@import './components/modals';
+@import './components/forms';
+@import './components/navigation';
+@import './components/pagination';
+@import './components/loader';
+@import './components/notifications';
+
+// ==================== STARTUP STYLES ====================
+// Visible starter UI with dark theme
+@import './startup';
+
+// ==================== PAGE-SPECIFIC ====================
+// Import page-specific styles as needed
+// Pages should have minimal CSS, most should be component-based

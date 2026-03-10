@@ -1,0 +1,424 @@
+/**
+ * Startup Styles
+ * ==============
+ * Visible styles for starter UI
+ * Dark theme with white text and simple card layouts
+ */
+
+// ==================== DARK THEME DEFAULT ====================
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: $color-dark-bg;
+  color: $color-dark-text;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+}
+
+// ==================== HEADER STYLES ====================
+.header-main {
+  background-color: $color-dark-surface;
+  border-bottom: 1px solid $color-gray-700;
+  padding: $spacing-md 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-xl;
+}
+
+.header-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  margin: 0;
+  color: $color-primary;
+}
+
+.logo-link {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-light;
+  }
+}
+
+.header-nav {
+  display: flex;
+  gap: $spacing-xl;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  color: $color-dark-text;
+  text-decoration: none;
+  transition: color $transition-base;
+  font-weight: $font-weight-medium;
+
+  &:hover,
+  &.active {
+    color: $color-primary;
+  }
+}
+
+// ==================== HERO STYLES ====================
+.hero {
+  padding: $spacing-xxxl $spacing-xl;
+  background: linear-gradient(135deg, $color-dark-surface 0%, $color-dark-bg 100%);
+  border-bottom: 1px solid $color-gray-700;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-bold;
+  margin: 0 0 $spacing-lg 0;
+  color: $color-primary;
+  line-height: $line-height-tight;
+}
+
+.hero-subtitle {
+  font-size: $font-size-xl;
+  color: $color-gray-400;
+  margin: 0 0 $spacing-xl 0;
+}
+
+.hero-actions {
+  display: flex;
+  gap: $spacing-lg;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ==================== BUTTON STYLES ====================
+.btn {
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all $transition-base;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-primary {
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+.btn-secondary {
+  background-color: $color-secondary;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-secondary-dark;
+  }
+}
+
+// ==================== CONTAINER ====================
+.container {
+  max-width: $container-xl;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 $spacing-lg;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $spacing-xl;
+  }
+}
+
+// ==================== SECTION TITLE ====================
+.section-title {
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  margin: 0 0 $spacing-xxl 0;
+  color: $color-primary;
+  text-align: center;
+}
+
+// ==================== FEATURES SECTION ====================
+.features {
+  padding: $spacing-xxl $spacing-xl;
+  background-color: $color-dark-bg;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-xl;
+}
+
+.feature-card {
+  background-color: $color-dark-surface;
+  padding: $spacing-xl;
+  border: 1px solid $color-gray-700;
+  border-radius: $border-radius-lg;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: rgba($color-primary, 0.05);
+  }
+
+  h3 {
+    font-size: $font-size-2xl;
+    color: $color-primary;
+    margin: 0 0 $spacing-md 0;
+  }
+
+  p {
+    color: $color-gray-400;
+    margin: 0;
+  }
+}
+
+// ==================== MOVIES GRID ====================
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-xxl;
+}
+
+.movie-card-placeholder {
+  background-color: $color-dark-surface;
+  border: 2px solid $color-gray-700;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  aspect-ratio: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-gray-400;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $color-primary;
+    background-color: rgba($color-primary, 0.05);
+  }
+}
+
+// ==================== SEARCH FORM ====================
+.search-section {
+  padding: $spacing-xl;
+  background-color: $color-dark-surface;
+  border-bottom: 1px solid $color-gray-700;
+}
+
+.search-form {
+  display: flex;
+  gap: $spacing-md;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &.placeholder {
+    border: 1px solid $color-gray-700;
+    padding: $spacing-md;
+    border-radius: $border-radius-lg;
+  }
+}
+
+.search-input {
+  flex: 1;
+  padding: $spacing-md;
+  background-color: $color-dark-bg;
+  color: $color-dark-text;
+  border: 1px solid $color-gray-700;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
+  }
+
+  &::placeholder {
+    color: $color-gray-600;
+  }
+}
+
+.search-btn {
+  padding: $spacing-md $spacing-xl;
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+// ==================== PAGINATION ====================
+.pagination-section {
+  padding: $spacing-xl;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $spacing-lg;
+
+  &.placeholder {
+    padding: $spacing-lg;
+    background-color: $color-dark-surface;
+    border: 1px solid $color-gray-700;
+    border-radius: $border-radius-lg;
+  }
+}
+
+.pagination-info {
+  color: $color-gray-400;
+  font-size: $font-size-sm;
+}
+
+.pagination-btn {
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-secondary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-secondary-dark;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// ==================== SECTION STYLES ====================
+.weekly-trends,
+.upcoming,
+.movie-list,
+.library-list {
+  padding: $spacing-xxl $spacing-xl;
+  background-color: $color-dark-bg;
+}
+
+.search-section {
+  background-color: $color-dark-surface;
+}
+
+// ==================== LOAD MORE ====================
+.load-more-section {
+  padding: $spacing-xxl $spacing-xl;
+  text-align: center;
+}
+
+.load-more-btn {
+  padding: $spacing-md $spacing-xl;
+  background-color: $color-secondary;
+  color: $color-white;
+  border: none;
+  border-radius: $border-radius-lg;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: all $transition-base;
+
+  &:hover {
+    background-color: $color-secondary-dark;
+  }
+
+  &.placeholder {
+    border: 2px dashed $color-gray-700;
+  }
+}
+
+// ==================== FOOTER ====================
+.footer {
+  background-color: $color-dark-surface;
+  border-top: 1px solid $color-gray-700;
+  padding: $spacing-xl;
+  margin-top: $spacing-xxl;
+  text-align: center;
+}
+
+.footer-text {
+  color: $color-gray-500;
+  font-size: $font-size-sm;
+  margin: 0;
+}
+
+// ==================== MOBILE MENU ====================
+.mobile-menu {
+  background-color: $color-dark-surface;
+  display: none;
+  border-bottom: 1px solid $color-gray-700;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+// ==================== RESPONSIVE ====================
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: $font-size-4xl;
+  }
+
+  .hero-subtitle {
+    font-size: $font-size-lg;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: $spacing-lg;
+  }
+}

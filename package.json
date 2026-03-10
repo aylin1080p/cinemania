@@ -1,0 +1,26 @@
+{
+  "name": "cinemania",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A multi-page vanilla JavaScript movie application built with Vite",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "sass": "^1.69.0"
+  },
+  "keywords": [
+    "movie",
+    "cinema",
+    "vite",
+    "vanilla-js"
+  ],
+  "author": "Cinemania Team",
+  "license": "MIT"
+}

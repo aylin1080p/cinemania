@@ -1,0 +1,105 @@
+/**
+ * Color Utilities
+ * ===============
+ * Text and background color classes
+ */
+
+// Text colors
+.text-primary {
+  color: $color-primary;
+}
+
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-success {
+  color: $color-success;
+}
+
+.text-warning {
+  color: $color-warning;
+}
+
+.text-error {
+  color: $color-error;
+}
+
+.text-info {
+  color: $color-info;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.text-black {
+  color: $color-black;
+}
+
+// Muted text
+.text-muted {
+  color: $color-gray-600;
+
+  [data-theme='dark'] & {
+    color: $color-gray-400;
+  }
+}
+
+// Background colors
+.bg-primary {
+  background-color: $color-primary;
+}
+
+.bg-secondary {
+  background-color: $color-secondary;
+}
+
+.bg-success {
+  background-color: $color-success;
+}
+
+.bg-warning {
+  background-color: $color-warning;
+}
+
+.bg-error {
+  background-color: $color-error;
+}
+
+.bg-info {
+  background-color: $color-info;
+}
+
+.bg-white {
+  background-color: $color-white;
+}
+
+.bg-black {
+  background-color: $color-black;
+}
+
+.bg-light {
+  background-color: $color-gray-100;
+
+  [data-theme='dark'] & {
+    background-color: $color-gray-900;
+  }
+}
+
+.bg-dark {
+  background-color: $color-gray-900;
+
+  [data-theme='dark'] & {
+    background-color: $color-gray-800;
+  }
+}
+
+// Theme-aware background
+.bg-surface {
+  background-color: $color-white;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-surface;
+  }
+}

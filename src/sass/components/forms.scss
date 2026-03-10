@@ -1,0 +1,135 @@
+/**
+ * Form Component Styles
+ * =====================
+ * Form inputs and form-related styles
+ */
+
+.form {
+  width: 100%;
+}
+
+.form__group {
+  margin-bottom: $spacing-lg;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-weight: $font-weight-medium;
+  color: $color-gray-700;
+
+  [data-theme='dark'] & {
+    color: $color-gray-300;
+  }
+}
+
+.form__input,
+.form__textarea,
+.form__select {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  font-family: inherit;
+  background-color: $color-white;
+  color: $color-gray-900;
+  @include animate(border-color, background-color);
+
+  [data-theme='dark'] & {
+    background-color: $color-gray-800;
+    color: $color-white;
+    border-color: $color-gray-600;
+  }
+
+  &:focus {
+    outline: none;
+    @include focus-ring;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $color-gray-500;
+
+    [data-theme='dark'] & {
+      color: $color-gray-400;
+    }
+  }
+}
+
+.form__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+// Search bar
+.search {
+  @include flex-between;
+  gap: $spacing-md;
+}
+
+.search__container {
+  @extend %container;
+  display: flex;
+  gap: $spacing-md;
+}
+
+.search__input {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $color-gray-300;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+
+  [data-theme='dark'] & {
+    background-color: $color-gray-800;
+    color: $color-white;
+    border-color: $color-gray-600;
+  }
+
+  &::placeholder {
+    color: $color-gray-500;
+
+    [data-theme='dark'] & {
+      color: $color-gray-400;
+    }
+  }
+}
+
+.search__button {
+  @extend %button-base;
+  padding: $spacing-sm $spacing-lg;
+  background-color: $color-primary;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+// Form helper text
+.form__help {
+  font-size: $font-size-sm;
+  color: $color-gray-600;
+  margin-top: $spacing-xs;
+
+  [data-theme='dark'] & {
+    color: $color-gray-400;
+  }
+}
+
+.form__error {
+  color: $color-error;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+}
+
+.form__success {
+  color: $color-success;
+  margin-top: $spacing-xs;
+  font-size: $font-size-sm;
+}

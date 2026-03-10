@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cinemania - My Library">
+  <title>My Library - Cinemania</title>
+</head>
+<body>
+  <div id="root">
+    <header id="header" class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <h1 class="header-title"><a href="/" class="logo-link">Cinemania</a></h1>
+          <nav class="header-nav">
+            <a href="/src/pages/home/" class="nav-link">Home</a>
+            <a href="/src/pages/catalog/" class="nav-link">Catalog</a>
+            <a href="/src/pages/library/" class="nav-link active">My Library</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <nav id="mobile-menu" class="mobile-menu"></nav>
+    
+    <main id="main">
+      <!-- Hero section -->
+      <section id="hero" class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">My Library</h1>
+            <p class="hero-subtitle">Your saved movies and watchlist</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Library list -->
+      <section id="library-list" class="library-list">
+        <div class="container">
+          <div class="movies-grid placeholder">
+            <div class="movie-card-placeholder">Saved Movie 1</div>
+            <div class="movie-card-placeholder">Saved Movie 2</div>
+            <div class="movie-card-placeholder">Saved Movie 3</div>
+            <div class="movie-card-placeholder">Saved Movie 4</div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Load more -->
+      <section id="load-more" class="load-more-section">
+        <div class="container">
+          <button class="load-more-btn placeholder">Load More Movies</button>
+        </div>
+      </section>
+    </main>
+    
+    <footer id="footer" class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; 2024 Cinemania. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/js/library.js"></script>
+</body>
+</html>

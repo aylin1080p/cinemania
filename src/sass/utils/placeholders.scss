@@ -1,0 +1,75 @@
+/**
+ * SCSS Placeholders
+ * =================
+ * Reusable extends for common patterns
+ * Use with @extend instead of mixins when multiple uses expected
+ */
+
+// Card styles
+%card {
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-surface;
+  }
+}
+
+// Button base
+%button-base {
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  @include animate;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Link base
+%link {
+  @include link-reset;
+  @include animate(color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Container
+%container {
+  max-width: $container-xl;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @include respond-to('md') {
+    padding: 0 $spacing-lg;
+  }
+
+  @include respond-to('lg') {
+    padding: 0 $spacing-xl;
+  }
+}
+
+// Section spacing
+%section {
+  padding: $spacing-xxl 0;
+
+  @include respond-to('md') {
+    padding: $spacing-xxxl 0;
+  }
+}
+
+// Heading base
+%heading {
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+}

@@ -1,0 +1,146 @@
+/**
+ * Reset Styles
+ * =============
+ * Global reset and normalize styles
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $color-white;
+  color: $color-gray-900;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  overflow-x: hidden;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-bg;
+    color: $color-dark-text;
+  }
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend %heading;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+}
+
+h2 {
+  font-size: $font-size-4xl;
+}
+
+h3 {
+  font-size: $font-size-3xl;
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+// Paragraph
+p {
+  margin-bottom: $spacing-md;
+}
+
+// Links
+a {
+  @extend %link;
+}
+
+// Lists
+ul,
+ol {
+  list-style-position: inside;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-left: $spacing-md;
+}
+
+li {
+  margin-bottom: $spacing-sm;
+}
+
+// Images
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Form elements
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  @include button-reset;
+}
+
+// Code blocks
+code,
+pre {
+  background-color: $color-gray-100;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm;
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+
+  [data-theme='dark'] & {
+    background-color: $color-gray-900;
+  }
+}
+
+// Table
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Accessibility
+[aria-hidden='true'] {
+  display: none !important;
+}

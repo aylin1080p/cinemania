@@ -1,0 +1,113 @@
+/**
+ * Card Component Styles
+ * =====================
+ * Card component styles for displaying content
+ */
+
+.card {
+  @extend %card;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.card__header {
+  padding: $spacing-md;
+  border-bottom: 1px solid $color-gray-200;
+
+  [data-theme='dark'] & {
+    border-bottom-color: $color-gray-700;
+  }
+}
+
+.card__body {
+  padding: $spacing-md;
+}
+
+.card__footer {
+  padding: $spacing-md;
+  border-top: 1px solid $color-gray-200;
+  background-color: $color-gray-100;
+
+  [data-theme='dark'] & {
+    border-top-color: $color-gray-700;
+    background-color: $color-gray-900;
+  }
+}
+
+// Movie card specific
+.movie-card {
+  @extend %card;
+  overflow: hidden;
+  cursor: pointer;
+  @include hover-lift;
+
+  &__poster {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__content {
+    padding: $spacing-md;
+  }
+
+  &__title {
+    @extend %heading;
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-sm;
+    @include line-clamp(2);
+  }
+
+  &__year {
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+
+    [data-theme='dark'] & {
+      color: $color-gray-400;
+    }
+
+    margin-bottom: $spacing-sm;
+  }
+
+  &__rating {
+    @include flex-between;
+    font-size: $font-size-sm;
+
+    .rating {
+      display: flex;
+      gap: $spacing-xs;
+      align-items: center;
+      color: $color-warning;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid $color-gray-200;
+
+    [data-theme='dark'] & {
+      border-top-color: $color-gray-700;
+    }
+
+    button {
+      flex: 1;
+      font-size: $font-size-sm;
+      padding: $spacing-sm;
+    }
+  }
+}

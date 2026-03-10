@@ -1,0 +1,158 @@
+/**
+ * Notification Component Styles
+ * =============================
+ * Toast and notification styles
+ */
+
+.notification-container {
+  position: fixed;
+  top: $spacing-lg;
+  right: $spacing-lg;
+  z-index: $z-index-notification;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  max-width: 400px;
+
+  @include respond-to('md') {
+    max-width: 500px;
+  }
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  background-color: $color-white;
+  color: $color-gray-900;
+  animation: slideInRight $transition-base ease-out;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-surface;
+    color: $color-white;
+  }
+
+  &--removing {
+    animation: slideOutRight $transition-base ease-in;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutRight {
+    to {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
+}
+
+.notification__content {
+  flex: 1;
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+}
+
+.notification__close {
+  @include button-reset;
+  width: 24px;
+  height: 24px;
+  @include flex-center;
+  flex-shrink: 0;
+  font-size: $font-size-lg;
+  opacity: 0.7;
+  @include animate(opacity);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Notification variants
+.notification--success {
+  background-color: rgba($color-success, 0.1);
+  color: $color-success;
+  border-left: 4px solid $color-success;
+
+  [data-theme='dark'] & {
+    background-color: rgba($color-success, 0.2);
+  }
+}
+
+.notification--error {
+  background-color: rgba($color-error, 0.1);
+  color: $color-error;
+  border-left: 4px solid $color-error;
+
+  [data-theme='dark'] & {
+    background-color: rgba($color-error, 0.2);
+  }
+}
+
+.notification--warning {
+  background-color: rgba($color-warning, 0.1);
+  color: $color-warning;
+  border-left: 4px solid $color-warning;
+
+  [data-theme='dark'] & {
+    background-color: rgba($color-warning, 0.2);
+  }
+}
+
+.notification--info {
+  background-color: rgba($color-info, 0.1);
+  color: $color-info;
+  border-left: 4px solid $color-info;
+
+  [data-theme='dark'] & {
+    background-color: rgba($color-info, 0.2);
+  }
+}
+
+// Alert box (inline notification)
+.alert {
+  padding: $spacing-lg;
+  border-radius: $border-radius-md;
+  border-left: 4px solid;
+  margin-bottom: $spacing-lg;
+
+  p {
+    margin: 0;
+  }
+}
+
+.alert--success {
+  background-color: rgba($color-success, 0.1);
+  border-color: $color-success;
+  color: $color-success;
+}
+
+.alert--error {
+  background-color: rgba($color-error, 0.1);
+  border-color: $color-error;
+  color: $color-error;
+}
+
+.alert--warning {
+  background-color: rgba($color-warning, 0.1);
+  border-color: $color-warning;
+  color: $color-warning;
+}
+
+.alert--info {
+  background-color: rgba($color-info, 0.1);
+  border-color: $color-info;
+  color: $color-info;
+}

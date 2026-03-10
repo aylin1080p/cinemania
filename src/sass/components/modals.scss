@@ -1,0 +1,116 @@
+/**
+ * Modal Component Styles
+ * ======================
+ * Modal dialog styles
+ */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-index-modal;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: $z-index-modal-backdrop;
+  cursor: pointer;
+}
+
+.modal__content {
+  position: relative;
+  background-color: $color-white;
+  border-radius: $border-radius-lg;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow: auto;
+  z-index: $z-index-modal + 1;
+  box-shadow: $shadow-xl;
+
+  [data-theme='dark'] & {
+    background-color: $color-dark-surface;
+  }
+
+  @include respond-to('md') {
+    max-width: 500px;
+  }
+
+  @include respond-to('lg') {
+    max-width: 600px;
+  }
+}
+
+.modal__close {
+  @include button-reset;
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  width: 40px;
+  height: 40px;
+  @include flex-center;
+  font-size: $font-size-2xl;
+  color: $color-gray-600;
+  border-radius: $border-radius-md;
+  @include animate;
+
+  &:hover {
+    background-color: $color-gray-200;
+    color: $color-gray-900;
+
+    [data-theme='dark'] & {
+      background-color: $color-gray-700;
+      color: $color-white;
+    }
+  }
+}
+
+.modal__header {
+  padding: $spacing-lg;
+  border-bottom: 1px solid $color-gray-200;
+
+  [data-theme='dark'] & {
+    border-bottom-color: $color-gray-700;
+  }
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.modal__body {
+  padding: $spacing-lg;
+}
+
+.modal__footer {
+  padding: $spacing-lg;
+  border-top: 1px solid $color-gray-200;
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+
+  [data-theme='dark'] & {
+    border-top-color: $color-gray-700;
+  }
+
+  button {
+    flex: 1;
+
+    @include respond-to('md') {
+      flex: 0 1 auto;
+    }
+  }
+}

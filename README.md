@@ -27,4 +27,4 @@ These technologies are commonly used in front-end projects combining HTML, CSS (
 
 ## 📐 Design
 
-The UI for this project is based on the provided Figma design:
+The UI for this project is based on the provided Figma design: https://www.figma.com/design/z7VY1GvA5xVR2ix7xeOfxx/Cinemania?node-id=4619-13447&t=7vCiRhrfxaywXwN1-0

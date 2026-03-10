@@ -8,73 +8,90 @@
 </head>
 <body>
   <div id="root">
-    <header id="header" class="header-main">
+
+    <!-- [owner: unassigned] → header.js -->
+    <header id="header" class="header" data-dev="Header Section">
       <div class="container">
-        <div class="header-content">
-          <h1 class="header-title"><a href="/" class="logo-link">Cinemania</a></h1>
-          <nav class="header-nav">
+        <div class="header__inner">
+          <a href="/" class="header__logo logo-link">
+            <img src="/images/logos/logo-main.svg" alt="Cinemania" class="nav-logo">
+          </a>
+          <nav class="header__nav">
             <a href="/src/pages/home/" class="nav-link">Home</a>
             <a href="/src/pages/catalog/" class="nav-link active">Catalog</a>
             <a href="/src/pages/library/" class="nav-link">My Library</a>
           </nav>
+          <div class="header__controls">
+            <!-- theme toggle rendered by header.js -->
+          </div>
+          <button class="header__burger" id="menuToggle" aria-label="Open menu">
+            <!-- burger icon rendered by header.js -->
+          </button>
         </div>
       </div>
     </header>
 
-    <nav id="mobile-menu" class="mobile-menu"></nav>
-    
+    <!-- [owner: unassigned] → mobile-menu.js -->
+    <div id="mobile-menu" class="mobile-menu" data-dev="Mobile Menu"></div>
+
     <main id="main">
-      <!-- Hero section -->
-      <section id="hero" class="hero">
+
+      <!-- [owner: unassigned] → hero.js -->
+      <!-- Full-viewport featured movie: backdrop image + content overlay -->
+      <section id="hero" class="hero" data-dev="Hero Section">
+        <div class="hero__backdrop">
+          <!-- movie backdrop image rendered by hero.js -->
+        </div>
         <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">Movie Catalog</h1>
-            <p class="hero-subtitle">Browse and discover movies</p>
+          <div class="hero__content">
+            <!-- movie title, rating, description, action buttons rendered by hero.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Search form -->
-      <section id="search-bar" class="search-section">
+
+      <!-- [owner: unassigned] → search-bar.js -->
+      <!-- Search input + submit button -->
+      <section id="search-bar" class="search-section" data-dev="Search Bar Section">
         <div class="container">
-          <div class="search-form placeholder">
-            <input type="text" class="search-input" placeholder="Search movies...">
-            <button class="search-btn">Search</button>
+          <form class="search-form" id="searchForm" role="search">
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search movies..."
+              aria-label="Search movies"
+            >
+            <button type="submit" class="search-btn" id="searchButton">Search</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- [owner: unassigned] → movie-list.js + pagination.js -->
+      <!-- Filter controls + movie cards grid + pagination -->
+      <section id="movie-list" class="movie-list" data-dev="Movie List Section">
+        <div class="container">
+          <div class="catalog-filters" id="catalogFilters" data-dev="Filter Bar">
+            <!-- genre filter dropdown, year filter dropdown, show button
+                 rendered by movie-list.js -->
+          </div>
+          <div class="movies-grid" id="movieListGrid">
+            <!-- movie cards rendered by movie-list.js -->
+          </div>
+          <div class="pagination" id="pagination" data-dev="Pagination">
+            <!-- pagination controls rendered by pagination.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Movie list -->
-      <section id="movie-list" class="movie-list">
-        <div class="container">
-          <div class="movies-grid placeholder">
-            <div class="movie-card-placeholder">Movie 1</div>
-            <div class="movie-card-placeholder">Movie 2</div>
-            <div class="movie-card-placeholder">Movie 3</div>
-            <div class="movie-card-placeholder">Movie 4</div>
-            <div class="movie-card-placeholder">Movie 5</div>
-            <div class="movie-card-placeholder">Movie 6</div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Pagination -->
-      <section id="pagination" class="pagination-section">
-        <div class="container">
-          <div class="pagination placeholder">
-            <button class="pagination-btn">Previous</button>
-            <span class="pagination-info">Page 1 of 10</span>
-            <button class="pagination-btn">Next</button>
-          </div>
-        </div>
-      </section>
+
     </main>
-    
-    <footer id="footer" class="footer">
+
+    <!-- [owner: unassigned] → footer.js -->
+    <footer id="footer" class="footer" data-dev="Footer Section">
       <div class="container">
-        <p class="footer-text">&copy; 2024 Cinemania. All rights reserved.</p>
+        <!-- footer content rendered by footer.js -->
       </div>
     </footer>
+
   </div>
 
   <script type="module" src="/src/js/catalog.js"></script>

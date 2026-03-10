@@ -13,7 +13,7 @@ import * as api from '../../services/tmdb-api.js';
 export async function initUpcoming() {
   console.log('Upcoming movies initialized');
   
-  if (!refs.upcomingList) {
+  if (!refs.upcomingFeatured) {
     return;
   }
 

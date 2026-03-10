@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cinemania - Asset Preview">
+  <title>Asset Preview - Cinemania</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #444;
+      padding: 2rem 0;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #ff6b35;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: #999;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #444;
+    }
+
+    nav a {
+      display: inline-block;
+      margin-right: 2rem;
+      color: #ff6b35;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff8c5a;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: #ff6b35;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #ff6b35;
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .asset-card {
+      background-color: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .asset-card:hover {
+      border-color: #ff6b35;
+      background-color: #252525;
+      box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+    }
+
+    .asset-preview {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0f0f0f;
+      border: 1px dashed #555;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .asset-preview img,
+    .asset-preview svg {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .asset-name {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #ff6b35;
+      word-break: break-all;
+      margin-top: 0.5rem;
+    }
+
+    .asset-path {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.3rem;
+      font-family: monospace;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      border-top: 1px solid #444;
+      padding: 2rem 0;
+      text-align: center;
+      color: #666;
+      margin-top: 4rem;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #ff6b35;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Asset Preview</h1>
+      <p>Visual reference for all Cinemania project assets</p>
+      <nav>
+        <a href="/">← Back to Home</a>
+        <a href="/src/pages/asset-preview/">Asset Preview</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Logos Section -->
+    <section class="section">
+      <h2 class="section-title">Logos</h2>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/logos/logo-main.svg" alt="Main Logo">
+          </div>
+          <div class="asset-name">logo-main.svg</div>
+          <div class="asset-path">/images/logos/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/logos/logo-white.svg" alt="White Logo">
+          </div>
+          <div class="asset-name">logo-white.svg</div>
+          <div class="asset-path">/images/logos/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/logos/logo-solid.svg" alt="Solid Logo">
+          </div>
+          <div class="asset-name">logo-solid.svg</div>
+          <div class="asset-path">/images/logos/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/logos/favicon.svg" alt="Favicon">
+          </div>
+          <div class="asset-name">favicon.svg</div>
+          <div class="asset-path">/images/logos/</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Icons Section -->
+    <section class="section">
+      <h2 class="section-title">Icons</h2>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/search-icon.svg" alt="Search">
+          </div>
+          <div class="asset-name">search-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/menu-icon.svg" alt="Menu">
+          </div>
+          <div class="asset-name">menu-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/close-icon.svg" alt="Close">
+          </div>
+          <div class="asset-name">close-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/heart-icon.svg" alt="Heart">
+          </div>
+          <div class="asset-name">heart-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/heart-icon-filled.svg" alt="Heart Filled">
+          </div>
+          <div class="asset-name">heart-icon-filled.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/plus-icon.svg" alt="Plus">
+          </div>
+          <div class="asset-name">plus-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/play-icon.svg" alt="Play">
+          </div>
+          <div class="asset-name">play-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/settings-icon.svg" alt="Settings">
+          </div>
+          <div class="asset-name">settings-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/sun-icon.svg" alt="Sun">
+          </div>
+          <div class="asset-name">sun-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/moon-icon.svg" alt="Moon">
+          </div>
+          <div class="asset-name">moon-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/arrow-up-icon.svg" alt="Arrow Up">
+          </div>
+          <div class="asset-name">arrow-up-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/star-icon.svg" alt="Star">
+          </div>
+          <div class="asset-name">star-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/star-icon-filled.svg" alt="Star Filled">
+          </div>
+          <div class="asset-name">star-icon-filled.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/share-icon.svg" alt="Share">
+          </div>
+          <div class="asset-name">share-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/download-icon.svg" alt="Download">
+          </div>
+          <div class="asset-name">download-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/filter-icon.svg" alt="Filter">
+          </div>
+          <div class="asset-name">filter-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/sort-icon.svg" alt="Sort">
+          </div>
+          <div class="asset-name">sort-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/chevron-left-icon.svg" alt="Chevron Left">
+          </div>
+          <div class="asset-name">chevron-left-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/chevron-right-icon.svg" alt="Chevron Right">
+          </div>
+          <div class="asset-name">chevron-right-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/chevron-down-icon.svg" alt="Chevron Down">
+          </div>
+          <div class="asset-name">chevron-down-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/calendar-icon.svg" alt="Calendar">
+          </div>
+          <div class="asset-name">calendar-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/clock-icon.svg" alt="Clock">
+          </div>
+          <div class="asset-name">clock-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/icons/film-reel-icon.svg" alt="Film Reel">
+          </div>
+          <div class="asset-name">film-reel-icon.svg</div>
+          <div class="asset-path">/images/icons/</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Images Section -->
+    <section class="section">
+      <h2 class="section-title">Hero Images</h2>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview" style="height: 150px;">
+            <img src="/images/hero/hero-home.svg" alt="Home Hero">
+          </div>
+          <div class="asset-name">hero-home.svg</div>
+          <div class="asset-path">/images/hero/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview" style="height: 150px;">
+            <img src="/images/hero/hero-catalog.svg" alt="Catalog Hero">
+          </div>
+          <div class="asset-name">hero-catalog.svg</div>
+          <div class="asset-path">/images/hero/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview" style="height: 150px;">
+            <img src="/images/hero/hero-library.svg" alt="Library Hero">
+          </div>
+          <div class="asset-name">hero-library.svg</div>
+          <div class="asset-path">/images/hero/</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholders Section -->
+    <section class="section">
+      <h2 class="section-title">Placeholders</h2>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/placeholders/placeholder-poster.svg" alt="Poster Placeholder">
+          </div>
+          <div class="asset-name">placeholder-poster.svg</div>
+          <div class="asset-path">/images/placeholders/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/placeholders/placeholder-backdrop.svg" alt="Backdrop Placeholder">
+          </div>
+          <div class="asset-name">placeholder-backdrop.svg</div>
+          <div class="asset-path">/images/placeholders/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/placeholders/placeholder-avatar.svg" alt="Avatar Placeholder">
+          </div>
+          <div class="asset-name">placeholder-avatar.svg</div>
+          <div class="asset-path">/images/placeholders/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/placeholders/placeholder-hero.svg" alt="Hero Placeholder">
+          </div>
+          <div class="asset-name">placeholder-hero.svg</div>
+          <div class="asset-path">/images/placeholders/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/placeholders/placeholder-skeleton-card.svg" alt="Skeleton Card">
+          </div>
+          <div class="asset-name">placeholder-skeleton-card.svg</div>
+          <div class="asset-path">/images/placeholders/</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Backgrounds Section -->
+    <section class="section">
+      <h2 class="section-title">Backgrounds & Patterns</h2>
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/backgrounds/bg-pattern-dots.svg" alt="Dots Pattern">
+          </div>
+          <div class="asset-name">bg-pattern-dots.svg</div>
+          <div class="asset-path">/images/backgrounds/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/backgrounds/bg-pattern-grid.svg" alt="Grid Pattern">
+          </div>
+          <div class="asset-name">bg-pattern-grid.svg</div>
+          <div class="asset-path">/images/backgrounds/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/backgrounds/divider-curve-top.svg" alt="Curve Top">
+          </div>
+          <div class="asset-name">divider-curve-top.svg</div>
+          <div class="asset-path">/images/backgrounds/</div>
+        </div>
+        <div class="asset-card">
+          <div class="asset-preview">
+            <img src="/images/backgrounds/divider-curve-bottom.svg" alt="Curve Bottom">
+          </div>
+          <div class="asset-name">divider-curve-bottom.svg</div>
+          <div class="asset-path">/images/backgrounds/</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Last Updated: 2026-03-10 | Cinemania Asset Library</p>
+  </footer>
+</body>
+</html>

@@ -11,6 +11,7 @@ export default defineConfig({
         home: new URL('./src/pages/home/index.html', import.meta.url).pathname,
         catalog: new URL('./src/pages/catalog/index.html', import.meta.url).pathname,
         library: new URL('./src/pages/library/index.html', import.meta.url).pathname,
+        'team-tasks': new URL('./src/pages/team-tasks/index.html', import.meta.url).pathname,
       },
       output: {
         entryFileNames: 'js/[name].js',

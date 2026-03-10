@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Görev Dağılımı — Cinemania Dev</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    a { color: #ff6b35; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── top bar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      background: #111;
+      border-bottom: 1px solid #222;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 10;
+    }
+    .topbar__back {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.08em;
+      color: #555;
+      border: 1px solid #333;
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+    .topbar__back:hover { color: #ff6b35; border-color: rgba(255,107,53,0.4); text-decoration: none; }
+    .topbar__title {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+    }
+
+    /* ── layout ── */
+    .page {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── sidebar ── */
+    .sidebar {
+      border-right: 1px solid #1a1a1a;
+      padding: 24px 0;
+      position: sticky;
+      top: 41px;
+      height: calc(100vh - 41px);
+      overflow-y: auto;
+    }
+    .sidebar__label {
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      padding: 0 20px 8px;
+    }
+    .sidebar__link {
+      display: block;
+      padding: 8px 20px;
+      font-size: 13px;
+      color: #555;
+      border-left: 2px solid transparent;
+    }
+    .sidebar__link:hover {
+      color: #e0e0e0;
+      border-left-color: rgba(255,107,53,0.4);
+      text-decoration: none;
+    }
+    .sidebar__link--lead { color: #ff6b35; }
+    .sidebar__divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 12px 20px;
+    }
+
+    /* ── content ── */
+    .content {
+      padding: 40px 48px;
+      max-width: 860px;
+    }
+
+    /* ── intro ── */
+    .intro {
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+      background: #111;
+    }
+    .intro__heading {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ff6b35;
+      margin-bottom: 12px;
+    }
+    .intro p { color: #888; margin-bottom: 12px; }
+    .intro p:last-child { margin-bottom: 0; }
+    .intro ul { padding-left: 20px; color: #888; }
+    .intro li { margin-bottom: 4px; }
+
+    /* ── rules ── */
+    .rules {
+      margin-bottom: 48px;
+    }
+    .rules__heading {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .rules__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .rule-block {
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      padding: 16px 20px;
+      background: #111;
+    }
+    .rule-block__title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .rule-block code {
+      display: block;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #888;
+      line-height: 1.8;
+    }
+    .rule-block--warn { border-color: rgba(255,107,53,0.2); }
+    .rule-block--warn .rule-block__title { color: rgba(255,107,53,0.6); }
+    .rule-block--warn code { color: rgba(255,107,53,0.7); }
+
+    /* ── dev cards ── */
+    .devs {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .dev-card {
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .dev-card__header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 24px;
+      background: #111;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .dev-card__number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,107,53,0.12);
+      border: 1px solid rgba(255,107,53,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ff6b35;
+      flex-shrink: 0;
+    }
+    .dev-card__title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e0e0e0;
+    }
+    .dev-card__branch {
+      margin-left: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #444;
+      background: #0f0f0f;
+      border: 1px solid #222;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+    .dev-card__body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .dev-card__col {
+      padding: 20px 24px;
+    }
+    .dev-card__col + .dev-card__col {
+      border-left: 1px solid #1a1a1a;
+    }
+    .dev-card__col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .dev-card__tasks {
+      list-style: none;
+    }
+    .dev-card__tasks li {
+      font-size: 13px;
+      color: #777;
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+    .dev-card__tasks li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: rgba(255,107,53,0.4);
+    }
+    .dev-card__files {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: #555;
+      line-height: 2;
+    }
+    .dev-card__files span {
+      display: block;
+    }
+
+    /* ── responsibility tables ── */
+    .tables {
+      margin-bottom: 48px;
+    }
+    .tables__heading {
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .tables__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .resp-table {
+      border: 1px solid #1a1a1a;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .resp-table__title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ff6b35;
+      padding: 10px 16px;
+      background: rgba(255,107,53,0.04);
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .resp-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resp-table td {
+      padding: 8px 16px;
+      font-size: 12px;
+      color: #666;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .resp-table tr:last-child td { border-bottom: none; }
+    .resp-table td:last-child { color: #ff6b35; text-align: right; }
+
+    /* ── team lead ── */
+    .team-lead {
+      border: 1px solid rgba(255,107,53,0.2);
+      border-radius: 6px;
+      padding: 20px 24px;
+      background: rgba(255,107,53,0.03);
+    }
+    .team-lead__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ff6b35;
+      margin-bottom: 12px;
+    }
+    .team-lead ul {
+      list-style: none;
+      padding: 0;
+    }
+    .team-lead li {
+      font-size: 13px;
+      color: #777;
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .team-lead li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: rgba(255,107,53,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .content { padding: 24px 20px; }
+      .rules__grid,
+      .dev-card__body,
+      .tables__grid { grid-template-columns: 1fr; }
+      .dev-card__col + .dev-card__col { border-left: none; border-top: 1px solid #1a1a1a; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/" class="topbar__back">← Dev Nav</a>
+    <span class="topbar__title">Cinemania / Görev Dağılımı</span>
+  </div>
+
+  <div class="page">
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar__label">Developerlar</div>
+      <a href="#dev1" class="sidebar__link">Dev 1 — Header + Hero</a>
+      <a href="#dev2" class="sidebar__link">Dev 2 — Weekly Trends</a>
+      <a href="#dev3" class="sidebar__link">Dev 3 — Upcoming</a>
+      <a href="#dev4" class="sidebar__link">Dev 4 — Search</a>
+      <a href="#dev5" class="sidebar__link">Dev 5 — Movie List</a>
+      <a href="#dev6" class="sidebar__link">Dev 6 — Modals</a>
+      <a href="#dev7" class="sidebar__link">Dev 7 — Library</a>
+      <a href="#dev8" class="sidebar__link">Dev 8 — Footer + Theme</a>
+      <hr class="sidebar__divider">
+      <a href="#pages" class="sidebar__link">Sayfa Tabloları</a>
+      <a href="#rules" class="sidebar__link">Genel Kurallar</a>
+      <a href="#lead" class="sidebar__link sidebar__link--lead">Team Lead</a>
+    </nav>
+
+    <!-- Main content -->
+    <main class="content">
+
+      <!-- Intro -->
+      <div class="intro">
+        <div class="intro__heading">Cinemania — 8 Kişilik Görev Dağılımı</div>
+        <p>Her geliştirici <strong>bir UI section'ın tam sahibi</strong> olur:</p>
+        <ul>
+          <li>HTML markup</li>
+          <li>SCSS stilleri (mobile / tablet / desktop responsive)</li>
+          <li>JavaScript davranışı ve event listener'lar</li>
+          <li>API bağlantıları</li>
+          <li>navigation / modal tetiklemeleri</li>
+        </ul>
+      </div>
+
+      <!-- Rules -->
+      <section id="rules" class="rules">
+        <div class="rules__heading">Genel Kurallar</div>
+        <div class="rules__grid">
+          <div class="rule-block">
+            <div class="rule-block__title">Branch formatı</div>
+            <code>
+              feature/header-hero<br>
+              feature/home-trends<br>
+              feature/home-upcoming<br>
+              feature/catalog-search<br>
+              feature/catalog-pagination<br>
+              feature/modal-system<br>
+              feature/library-section<br>
+              feature/footer-theme
+            </code>
+          </div>
+          <div class="rule-block rule-block--warn">
+            <div class="rule-block__title">Kimse dokunamaz (sadece Team Lead)</div>
+            <code>
+              vite.config.js<br>
+              package.json<br>
+              src/services/tmdb-api.js<br>
+              src/utils/storage.js<br>
+              src/utils/theme.js<br>
+              src/sass/index.scss
+            </code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dev cards -->
+      <div class="devs">
+
+        <div class="dev-card" id="dev1">
+          <div class="dev-card__header">
+            <div class="dev-card__number">1</div>
+            <div class="dev-card__title">Header + Hero <small style="font-weight:400;color:#555">(Global — tüm sayfalarda)</small></div>
+            <code class="dev-card__branch">feature/header-hero</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Logo, Home / Catalog / My Library linkleri</li>
+                <li>Active link state</li>
+                <li>Mobile menu toggle</li>
+                <li>Günlük trend film hero backdrop</li>
+                <li>Fallback hero</li>
+                <li>More details + Watch trailer butonları</li>
+                <li>Responsive: mobile / tablet / desktop</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/header.js</span>
+                <span>src/js/modules/mobile-menu.js</span>
+                <span>src/js/modules/hero.js</span>
+                <span>src/sass/layouts/header.scss</span>
+                <span>src/sass/components/navigation.scss</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev2">
+          <div class="dev-card__header">
+            <div class="dev-card__number">2</div>
+            <div class="dev-card__title">Home — Weekly Trends</div>
+            <code class="dev-card__branch">feature/home-trends</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Haftalık trend filmleri TMDB'den çek</li>
+                <li>Film kartı render</li>
+                <li>See All linki</li>
+                <li>Karta tıklayınca movie modal açılması</li>
+                <li>Responsive grid (mobile / tablet / desktop)</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/weekly-trends.js</span>
+                <span>src/sass/components/cards.scss</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev3">
+          <div class="dev-card__header">
+            <div class="dev-card__number">3</div>
+            <div class="dev-card__title">Home — Upcoming This Month</div>
+            <code class="dev-card__branch">feature/home-upcoming</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Upcoming film çek, rastgele seç</li>
+                <li>Film posteri, release date, rating, genres, açıklama</li>
+                <li>Add to My Library / Remove from My Library butonu</li>
+                <li>Responsive: mobile stacked / tablet / desktop</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/upcoming.js</span>
+                <span>src/sass/components/buttons.scss</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev4">
+          <div class="dev-card__header">
+            <div class="dev-card__number">4</div>
+            <div class="dev-card__title">Catalog — Search Section</div>
+            <code class="dev-card__branch">feature/catalog-search</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Search bar (keyword arama)</li>
+                <li>Year filter</li>
+                <li>Clear button</li>
+                <li>Boş sonuç mesajı</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/search-bar.js</span>
+                <span>src/sass/components/forms.scss</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev5">
+          <div class="dev-card__header">
+            <div class="dev-card__number">5</div>
+            <div class="dev-card__title">Catalog — Movie List + Pagination</div>
+            <code class="dev-card__branch">feature/catalog-pagination</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Film kartı render (grid)</li>
+                <li>Genre / year filter kontrolü</li>
+                <li>Pagination (server-side)</li>
+                <li>Sayfa değişimi</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/movie-list.js</span>
+                <span>src/js/modules/pagination.js</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev6">
+          <div class="dev-card__header">
+            <div class="dev-card__number">6</div>
+            <div class="dev-card__title">Modal Sistemi</div>
+            <code class="dev-card__branch">feature/modal-system</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Movie details modal</li>
+                <li>Trailer modal</li>
+                <li>ESC ile kapama</li>
+                <li>Overlay click ile kapama</li>
+                <li>Close button</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/sass/components/modals.scss</span>
+                <span>(modal JS modülleri)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev7">
+          <div class="dev-card__header">
+            <div class="dev-card__number">7</div>
+            <div class="dev-card__title">My Library Page</div>
+            <code class="dev-card__branch">feature/library-section</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Watched / Queue tab sistemi</li>
+                <li>Kullanıcının kaydettiği filmler</li>
+                <li>Boş library mesajı</li>
+                <li>Genre filter</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/pages/library/index.html</span>
+                <span>src/js/modules/library-list.js</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dev-card" id="dev8">
+          <div class="dev-card__header">
+            <div class="dev-card__number">8</div>
+            <div class="dev-card__title">Footer + Theme + Loader + Scroll Up</div>
+            <code class="dev-card__branch">feature/footer-theme</code>
+          </div>
+          <div class="dev-card__body">
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Yapılacaklar</div>
+              <ul class="dev-card__tasks">
+                <li>Footer içeriği</li>
+                <li>Dark / Light theme switch (localStorage)</li>
+                <li>Loading spinner</li>
+                <li>Scroll-to-top butonu</li>
+                <li>Team modal</li>
+              </ul>
+            </div>
+            <div class="dev-card__col">
+              <div class="dev-card__col-label">Dosyalar</div>
+              <div class="dev-card__files">
+                <span>src/js/modules/footer.js</span>
+                <span>src/utils/loader.js</span>
+                <span>src/utils/scroll-up.js</span>
+                <span>src/utils/theme.js</span>
+                <span>src/sass/layouts/footer.scss</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Responsibility tables -->
+      <section id="pages" class="tables">
+        <div class="tables__heading">Sayfa Entegrasyon Sorumluluğu</div>
+        <div class="tables__grid">
+
+          <div class="resp-table">
+            <div class="resp-table__title">Home</div>
+            <table>
+              <tr><td>Header</td><td>Dev 1</td></tr>
+              <tr><td>Hero</td><td>Dev 1</td></tr>
+              <tr><td>Weekly Trends</td><td>Dev 2</td></tr>
+              <tr><td>Upcoming</td><td>Dev 3</td></tr>
+              <tr><td>Modal</td><td>Dev 6</td></tr>
+              <tr><td>Footer</td><td>Dev 8</td></tr>
+            </table>
+          </div>
+
+          <div class="resp-table">
+            <div class="resp-table__title">Catalog</div>
+            <table>
+              <tr><td>Header</td><td>Dev 1</td></tr>
+              <tr><td>Search</td><td>Dev 4</td></tr>
+              <tr><td>Movie List</td><td>Dev 5</td></tr>
+              <tr><td>Pagination</td><td>Dev 5</td></tr>
+              <tr><td>Modal</td><td>Dev 6</td></tr>
+              <tr><td>Footer</td><td>Dev 8</td></tr>
+            </table>
+          </div>
+
+          <div class="resp-table">
+            <div class="resp-table__title">Library</div>
+            <table>
+              <tr><td>Header</td><td>Dev 1</td></tr>
+              <tr><td>Library List</td><td>Dev 7</td></tr>
+              <tr><td>Modal</td><td>Dev 6</td></tr>
+              <tr><td>Footer</td><td>Dev 8</td></tr>
+            </table>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Team lead -->
+      <section id="lead" class="team-lead">
+        <div class="team-lead__title">Team Lead</div>
+        <ul>
+          <li>Mimariyi korur</li>
+          <li>PR review ve merge yapar</li>
+          <li>Deploy yapar</li>
+          <li>API entegrasyonunu denetler</li>
+          <li>Çatışmaları çözer</li>
+          <li>Korumalı dosyalara tek erişim yetkisi</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>

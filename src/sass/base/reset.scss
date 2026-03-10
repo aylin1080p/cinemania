@@ -21,20 +21,17 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Dark is the project baseline — not a toggle.
+// Light theme support can be added later via [data-theme='light'].
 body {
   margin: 0;
   padding: 0;
-  background-color: $color-white;
-  color: $color-gray-900;
+  background-color: $color-dark-bg;
+  color: $color-dark-text;
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-normal;
   overflow-x: hidden;
-
-  [data-theme='dark'] & {
-    background-color: $color-dark-bg;
-    color: $color-dark-text;
-  }
 }
 
 // Headings
@@ -122,15 +119,11 @@ button {
 // Code blocks
 code,
 pre {
-  background-color: $color-gray-100;
+  background-color: $color-dark-surface;
   border-radius: $border-radius-md;
   padding: $spacing-sm;
   font-family: $font-family-mono;
   font-size: $font-size-sm;
-
-  [data-theme='dark'] & {
-    background-color: $color-gray-900;
-  }
 }
 
 // Table

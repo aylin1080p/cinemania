@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+  <defs>
+    <linearGradient id="heroGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#004e89;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#heroGrad1)"/>
+  <rect x="40" y="40" width="1120" height="220" fill="none" stroke="#444" stroke-width="2"/>
+  <text x="600" y="140" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#fff" text-anchor="middle">Home Hero Banner</text>
+  <text x="600" y="180" font-family="Arial, sans-serif" font-size="16" fill="#ccc" text-anchor="middle">[Manual Export Required from Figma]</text>
+</svg>

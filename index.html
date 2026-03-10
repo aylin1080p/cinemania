@@ -3,68 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Cinemania - Your gateway to cinema">
-  <title>Cinemania - Discover Movies</title>
+  <title>Dev Nav — Cinemania</title>
+  <style>
+    /* Scoped to this file only. Not part of the app component system. */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dev-nav {
+      width: 100%;
+      max-width: 480px;
+      padding: 40px 24px;
+    }
+
+    .dev-nav__badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ff6b35;
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-bottom: 24px;
+    }
+
+    .dev-nav__logo {
+      display: block;
+      height: 32px;
+      width: auto;
+      margin-bottom: 8px;
+    }
+
+    .dev-nav__note {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .dev-nav__group {
+      margin-bottom: 32px;
+    }
+
+    .dev-nav__group-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #222;
+    }
+
+    .dev-nav__link {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #1a1a1a;
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: color 0.15s;
+    }
+
+    .dev-nav__link:hover {
+      color: #ff6b35;
+    }
+
+    .dev-nav__link-name {
+      font-weight: 700;
+    }
+
+    .dev-nav__link-path {
+      font-size: 11px;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .dev-nav__link:hover .dev-nav__link-path {
+      color: rgba(255, 107, 53, 0.5);
+    }
+  </style>
 </head>
 <body>
-  <div id="root">
-    <header id="header" class="header-main">
-      <div class="container">
-        <div class="header-content">
-          <h1 class="header-title">Cinemania</h1>
-          <nav class="header-nav">
-            <a href="/src/pages/home/" class="nav-link">Home</a>
-            <a href="/src/pages/catalog/" class="nav-link">Catalog</a>
-            <a href="/src/pages/library/" class="nav-link">My Library</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <div class="dev-nav">
 
-    <main id="main">
-      <!-- Hero section -->
-      <section id="hero" class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">Welcome to Cinemania</h1>
-            <p class="hero-subtitle">Your gateway to cinema - Discover, explore, and organize your favorite movies</p>
-            <div class="hero-actions">
-              <a href="/src/pages/home/" class="btn btn-primary">Explore Home</a>
-              <a href="/src/pages/catalog/" class="btn btn-secondary">Browse Catalog</a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <span class="dev-nav__badge">Developer Entry Point</span>
 
-      <!-- Features section -->
-      <section id="features" class="features">
-        <div class="container">
-          <h2 class="section-title">Features</h2>
-          <div class="features-grid">
-            <div class="feature-card">
-              <h3>Discover Trends</h3>
-              <p>Explore weekly trending movies and latest releases</p>
-            </div>
-            <div class="feature-card">
-              <h3>Browse Catalog</h3>
-              <p>Search and filter through our extensive movie database</p>
-            </div>
-            <div class="feature-card">
-              <h3>Save Favorites</h3>
-              <p>Build your personal library and organize your watchlist</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    <img src="/images/logos/logo-main.svg" alt="Cinemania" class="dev-nav__logo">
 
-    <footer id="footer" class="footer">
-      <div class="container">
-        <p class="footer-text">&copy; 2024 Cinemania. All rights reserved.</p>
-      </div>
-    </footer>
+    <p class="dev-nav__note">
+      This is not the app. The real application starts at /src/pages/home/.<br>
+      Use the links below to navigate during development.
+    </p>
+
+    <div class="dev-nav__group">
+      <div class="dev-nav__group-label">App Pages</div>
+      <a href="/src/pages/home/" class="dev-nav__link">
+        <span class="dev-nav__link-name">Home</span>
+        <span class="dev-nav__link-path">src/pages/home/index.html</span>
+      </a>
+      <a href="/src/pages/catalog/" class="dev-nav__link">
+        <span class="dev-nav__link-name">Catalog</span>
+        <span class="dev-nav__link-path">src/pages/catalog/index.html</span>
+      </a>
+      <a href="/src/pages/library/" class="dev-nav__link">
+        <span class="dev-nav__link-name">My Library</span>
+        <span class="dev-nav__link-path">src/pages/library/index.html</span>
+      </a>
+    </div>
+
+    <div class="dev-nav__group">
+      <div class="dev-nav__group-label">Dev Tools</div>
+      <a href="/src/pages/team-tasks/" class="dev-nav__link">
+        <span class="dev-nav__link-name">Görev Dağılımı</span>
+        <span class="dev-nav__link-path">src/pages/team-tasks/index.html</span>
+      </a>
+      <a href="/src/pages/asset-preview/" class="dev-nav__link">
+        <span class="dev-nav__link-name">Asset Preview</span>
+        <span class="dev-nav__link-path">src/pages/asset-preview/index.html</span>
+      </a>
+    </div>
+
   </div>
-
-  <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

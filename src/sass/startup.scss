@@ -18,48 +18,7 @@ body {
   line-height: $line-height-normal;
 }
 
-// ==================== HEADER STYLES ====================
-.header-main {
-  background-color: $color-dark-surface;
-  border-bottom: 1px solid $color-gray-700;
-  padding: $spacing-md 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: $spacing-xl;
-}
-
-.header-title {
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-bold;
-  margin: 0;
-  color: $color-primary;
-}
-
-.logo-link {
-  color: $color-primary;
-  text-decoration: none;
-  transition: color $transition-base;
-
-  &:hover {
-    color: $color-primary-light;
-  }
-}
-
-.header-nav {
-  display: flex;
-  gap: $spacing-xl;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
+// ==================== NAV LINK (shared across pages) ====================
 .nav-link {
   color: $color-dark-text;
   text-decoration: none;
@@ -73,37 +32,25 @@ body {
 }
 
 // ==================== HERO STYLES ====================
+// Full-viewport section: backdrop fills the section, content overlaid on top.
 .hero {
-  padding: $spacing-xxxl $spacing-xl;
-  background: linear-gradient(135deg, $color-dark-surface 0%, $color-dark-bg 100%);
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
   border-bottom: 1px solid $color-gray-700;
-  text-align: center;
 }
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+.hero__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: $color-dark-bg;
 }
 
-.hero-title {
-  font-size: $font-size-5xl;
-  font-weight: $font-weight-bold;
-  margin: 0 0 $spacing-lg 0;
-  color: $color-primary;
-  line-height: $line-height-tight;
-}
-
-.hero-subtitle {
-  font-size: $font-size-xl;
-  color: $color-gray-400;
-  margin: 0 0 $spacing-xl 0;
-}
-
-.hero-actions {
-  display: flex;
-  gap: $spacing-lg;
-  justify-content: center;
-  flex-wrap: wrap;
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  padding: $spacing-xxxl 0;
 }
 
 // ==================== BUTTON STYLES ====================
@@ -116,15 +63,7 @@ body {
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  transition: all $transition-base;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
+  transition: background-color $transition-base, color $transition-base;
 }
 
 .btn-primary {
@@ -160,48 +99,31 @@ body {
   }
 }
 
-// ==================== SECTION TITLE ====================
+// ==================== SECTION HEADER ====================
+// Row containing section title + optional "See all" link.
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: $spacing-xl;
+}
+
 .section-title {
   font-size: $font-size-4xl;
   font-weight: $font-weight-bold;
-  margin: 0 0 $spacing-xxl 0;
+  margin: 0;
   color: $color-primary;
-  text-align: center;
 }
 
-// ==================== FEATURES SECTION ====================
-.features {
-  padding: $spacing-xxl $spacing-xl;
-  background-color: $color-dark-bg;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: $spacing-xl;
-}
-
-.feature-card {
-  background-color: $color-dark-surface;
-  padding: $spacing-xl;
-  border: 1px solid $color-gray-700;
-  border-radius: $border-radius-lg;
-  transition: all $transition-base;
+.see-all {
+  color: $color-primary;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: color $transition-base;
 
   &:hover {
-    border-color: $color-primary;
-    background-color: rgba($color-primary, 0.05);
-  }
-
-  h3 {
-    font-size: $font-size-2xl;
-    color: $color-primary;
-    margin: 0 0 $spacing-md 0;
-  }
-
-  p {
-    color: $color-gray-400;
-    margin: 0;
+    color: $color-primary-light;
   }
 }
 
@@ -211,27 +133,6 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: $spacing-xl;
   margin-bottom: $spacing-xxl;
-}
-
-.movie-card-placeholder {
-  background-color: $color-dark-surface;
-  border: 2px solid $color-gray-700;
-  border-radius: $border-radius-lg;
-  padding: $spacing-xl;
-  aspect-ratio: 2/3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $color-gray-400;
-  transition: all $transition-base;
-
-  &:hover {
-    border-color: $color-primary;
-    background-color: rgba($color-primary, 0.05);
-  }
 }
 
 // ==================== SEARCH FORM ====================
@@ -246,12 +147,6 @@ body {
   gap: $spacing-md;
   max-width: 500px;
   margin: 0 auto;
-
-  &.placeholder {
-    border: 1px solid $color-gray-700;
-    padding: $spacing-md;
-    border-radius: $border-radius-lg;
-  }
 }
 
 .search-input {
@@ -291,22 +186,11 @@ body {
 }
 
 // ==================== PAGINATION ====================
-.pagination-section {
-  padding: $spacing-xl;
-}
-
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: $spacing-lg;
-
-  &.placeholder {
-    padding: $spacing-lg;
-    background-color: $color-dark-surface;
-    border: 1px solid $color-gray-700;
-    border-radius: $border-radius-lg;
-  }
 }
 
 .pagination-info {
@@ -338,54 +222,74 @@ body {
 .weekly-trends,
 .upcoming,
 .movie-list,
-.library-list {
-  padding: $spacing-xxl $spacing-xl;
+.library-list,
+.library-tabs {
+  padding: $spacing-xxl 0;
   background-color: $color-dark-bg;
 }
 
-.search-section {
-  background-color: $color-dark-surface;
+// ==================== WEEKLY TRENDS ====================
+// Horizontally scrollable strip of movie cards.
+.movies-strip {
+  display: flex;
+  gap: $spacing-lg;
+  overflow-x: auto;
+  padding-bottom: $spacing-md;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $color-dark-surface;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-gray-700;
+    border-radius: $border-radius-sm;
+  }
 }
 
-// ==================== LOAD MORE ====================
-.load-more-section {
-  padding: $spacing-xxl $spacing-xl;
-  text-align: center;
+// ==================== UPCOMING THIS MONTH ====================
+// Two-column layout: poster image left, details panel right.
+.upcoming__featured {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $spacing-xxl;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.load-more-btn {
-  padding: $spacing-md $spacing-xl;
-  background-color: $color-secondary;
-  color: $color-white;
-  border: none;
+.upcoming__poster {
+  flex-shrink: 0;
   border-radius: $border-radius-lg;
-  font-weight: $font-weight-semibold;
-  font-size: $font-size-base;
-  cursor: pointer;
-  transition: all $transition-base;
-
-  &:hover {
-    background-color: $color-secondary-dark;
-  }
-
-  &.placeholder {
-    border: 2px dashed $color-gray-700;
-  }
+  overflow: hidden;
 }
 
-// ==================== FOOTER ====================
-.footer {
-  background-color: $color-dark-surface;
-  border-top: 1px solid $color-gray-700;
-  padding: $spacing-xl;
-  margin-top: $spacing-xxl;
-  text-align: center;
+.upcoming__details {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
 }
 
-.footer-text {
-  color: $color-gray-500;
-  font-size: $font-size-sm;
-  margin: 0;
+// ==================== CATALOG FILTERS ====================
+.catalog-filters {
+  display: flex;
+  gap: $spacing-md;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-xl;
+}
+
+// ==================== LIBRARY TABS ====================
+.library-tabs__controls {
+  display: flex;
+  gap: $spacing-md;
+  border-bottom: 1px solid $color-gray-700;
+  padding-bottom: $spacing-md;
 }
 
 // ==================== MOBILE MENU ====================
@@ -401,24 +305,56 @@ body {
 
 // ==================== RESPONSIVE ====================
 @media (max-width: 768px) {
-  .header-nav {
+  .header__nav {
     display: none;
-  }
-
-  .hero-title {
-    font-size: $font-size-4xl;
-  }
-
-  .hero-subtitle {
-    font-size: $font-size-lg;
-  }
-
-  .hero-actions {
-    flex-direction: column;
   }
 
   .movies-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: $spacing-lg;
   }
+}
+
+// ==================== DEV SECTION LABELS ====================
+// Adds a visible boundary and name label to every section marked with data-dev="…"
+// Remove or disable this entire block before shipping to production.
+
+[data-dev] {
+  min-height: 60px;
+  outline: 1px dashed rgba($color-primary, 0.2);
+
+  &::before {
+    content: attr(data-dev);
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba($color-primary, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 5px 10px;
+    background-color: rgba($color-primary, 0.04);
+    border-bottom: 1px dashed rgba($color-primary, 0.15);
+    pointer-events: none;
+  }
+}
+
+// ==================== EMPTY STATE AREAS ====================
+// Makes content containers visible before JS populates them.
+// Developers can see where each section renders even with no data yet.
+.movies-grid:empty,
+.movies-strip:empty,
+.upcoming__featured:empty,
+.library-tabs__controls:empty,
+.catalog-filters:empty {
+  min-height: 160px;
+  border-radius: $border-radius-md;
+  border: 1px dashed rgba($color-primary, 0.08);
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba($color-primary, 0.02) 0px,
+    rgba($color-primary, 0.02) 1px,
+    transparent 1px,
+    transparent 12px
+  );
 }

@@ -1,35 +1,46 @@
 /**
  * DOM References
  * ==============
- * Centralized collection of DOM element references
- * Improves performance by caching selectors
+ * Centralized collection of DOM element references.
+ * IDs match the page HTML exactly — update both together.
  */
 
-// Header & Navigation
+// ==================== HEADER & NAVIGATION ====================
 export const header = document.getElementById('header');
 export const menuToggle = document.getElementById('menuToggle');
-export const mobileMenu = document.getElementById('mobileMenu');
-export const closeMenu = document.getElementById('closeMenu');
+export const mobileMenu = document.getElementById('mobile-menu');
 
-// Main Content
+// ==================== MAIN ====================
 export const main = document.getElementById('main');
 export const root = document.getElementById('root');
 
-// Hero Section
+// ==================== HERO (Home + Catalog) ====================
 export const hero = document.getElementById('hero');
 
-// Sections
+// ==================== HOME — WEEKLY TRENDS ====================
 export const weeklyTrendsList = document.getElementById('weeklyTrendsList');
-export const upcomingList = document.getElementById('upcomingList');
-export const movieListGrid = document.getElementById('movieListGrid');
-export const libraryListGrid = document.getElementById('libraryListGrid');
-export const searchSection = document.getElementById('search-section');
+export const weeklyTrendsSeeAll = document.getElementById('weeklyTrendsSeeAll');
 
-// Search
+// ==================== HOME — UPCOMING THIS MONTH ====================
+export const upcomingFeatured = document.getElementById('upcomingFeatured');
+
+// ==================== CATALOG — SEARCH ====================
+export const searchForm = document.getElementById('searchForm');
 export const searchInput = document.getElementById('searchInput');
 export const searchButton = document.getElementById('searchButton');
 
-// Modals
+// ==================== CATALOG — MOVIE LIST & FILTERS ====================
+export const catalogFilters = document.getElementById('catalogFilters');
+export const movieListGrid = document.getElementById('movieListGrid');
+
+// ==================== CATALOG — PAGINATION ====================
+export const pagination = document.getElementById('pagination');
+
+// ==================== LIBRARY ====================
+export const libraryTabControls = document.getElementById('libraryTabControls');
+export const libraryListGrid = document.getElementById('libraryListGrid');
+
+// ==================== MODALS ====================
 export const movieModal = document.getElementById('movieModal');
 export const movieModalOverlay = document.getElementById('movieModalOverlay');
 export const movieModalClose = document.getElementById('movieModalClose');
@@ -40,15 +51,8 @@ export const teamModal = document.getElementById('teamModal');
 export const teamModalOverlay = document.getElementById('teamModalOverlay');
 export const teamModalClose = document.getElementById('teamModalClose');
 
-// Pagination
-export const prevPage = document.getElementById('prevPage');
-export const nextPage = document.getElementById('nextPage');
-export const currentPage = document.getElementById('currentPage');
-export const totalPages = document.getElementById('totalPages');
-export const pageInfo = document.getElementById('pageInfo');
-
-// Loader
+// ==================== LOADER ====================
 export const loader = document.getElementById('loader');
 
-// Footer
+// ==================== FOOTER ====================
 export const footer = document.getElementById('footer');

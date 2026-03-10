@@ -8,64 +8,92 @@
 </head>
 <body>
   <div id="root">
-    <header id="header" class="header-main">
+
+    <!-- [owner: unassigned] → header.js -->
+    <header id="header" class="header" data-dev="Header Section">
       <div class="container">
-        <div class="header-content">
-          <h1 class="header-title"><a href="/" class="logo-link">Cinemania</a></h1>
-          <nav class="header-nav">
+        <div class="header__inner">
+          <a href="/" class="header__logo logo-link">
+            <img src="/images/logos/logo-main.svg" alt="Cinemania" class="nav-logo">
+          </a>
+          <nav class="header__nav">
             <a href="/src/pages/home/" class="nav-link active">Home</a>
             <a href="/src/pages/catalog/" class="nav-link">Catalog</a>
             <a href="/src/pages/library/" class="nav-link">My Library</a>
           </nav>
+          <div class="header__controls">
+            <!-- theme toggle rendered by header.js -->
+          </div>
+          <button class="header__burger" id="menuToggle" aria-label="Open menu">
+            <!-- burger icon rendered by header.js -->
+          </button>
         </div>
       </div>
     </header>
 
-    <nav id="mobile-menu" class="mobile-menu"></nav>
-    
+    <!-- [owner: unassigned] → mobile-menu.js -->
+    <div id="mobile-menu" class="mobile-menu" data-dev="Mobile Menu"></div>
+
     <main id="main">
-      <!-- Hero section -->
-      <section id="hero" class="hero">
+
+      <!-- [owner: unassigned] → hero.js -->
+      <!-- Full-viewport featured movie: backdrop image + content overlay -->
+      <section id="hero" class="hero" data-dev="Hero Section">
+        <div class="hero__backdrop">
+          <!-- movie backdrop image rendered by hero.js -->
+        </div>
         <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">Discover Cinema</h1>
-            <p class="hero-subtitle">Find your next favorite movie</p>
+          <div class="hero__content">
+            <!-- movie title, rating, description, action buttons rendered by hero.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Weekly trends -->
-      <section id="weekly-trends" class="weekly-trends">
+
+      <!-- [owner: unassigned] → weekly-trends.js -->
+      <!-- Horizontal strip of trending movie cards -->
+      <section id="weekly-trends" class="weekly-trends" data-dev="Weekly Trends Section">
         <div class="container">
-          <h2 class="section-title">Weekly Trends</h2>
-          <div class="movies-grid placeholder">
-            <div class="movie-card-placeholder">Trending Movie 1</div>
-            <div class="movie-card-placeholder">Trending Movie 2</div>
-            <div class="movie-card-placeholder">Trending Movie 3</div>
-            <div class="movie-card-placeholder">Trending Movie 4</div>
+          <div class="section-header">
+            <h2 class="section-title">Weekly Trends</h2>
+            <a href="#" class="see-all" id="weeklyTrendsSeeAll">
+              <!-- "See all" link rendered by weekly-trends.js -->
+            </a>
+          </div>
+          <div class="movies-strip" id="weeklyTrendsList">
+            <!-- movie cards rendered by weekly-trends.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Upcoming movies -->
-      <section id="upcoming" class="upcoming">
+
+      <!-- [owner: unassigned] → upcoming.js -->
+      <!-- Featured single movie: poster image left + details panel right -->
+      <section id="upcoming" class="upcoming" data-dev="Upcoming This Month Section">
         <div class="container">
-          <h2 class="section-title">Upcoming Releases</h2>
-          <div class="movies-grid placeholder">
-            <div class="movie-card-placeholder">Upcoming Movie 1</div>
-            <div class="movie-card-placeholder">Upcoming Movie 2</div>
-            <div class="movie-card-placeholder">Upcoming Movie 3</div>
-            <div class="movie-card-placeholder">Upcoming Movie 4</div>
+          <div class="section-header">
+            <h2 class="section-title">Upcoming This Month</h2>
+          </div>
+          <div class="upcoming__featured" id="upcomingFeatured">
+            <div class="upcoming__poster">
+              <!-- movie poster image rendered by upcoming.js -->
+            </div>
+            <div class="upcoming__details">
+              <!-- movie title, release date, runtime, popularity,
+                   genre, about text, "Add to my library" button
+                   rendered by upcoming.js -->
+            </div>
           </div>
         </div>
       </section>
+
     </main>
-    
-    <footer id="footer" class="footer">
+
+    <!-- [owner: unassigned] → footer.js -->
+    <footer id="footer" class="footer" data-dev="Footer Section">
       <div class="container">
-        <p class="footer-text">&copy; 2024 Cinemania. All rights reserved.</p>
+        <!-- footer content rendered by footer.js -->
       </div>
     </footer>
+
   </div>
 
   <script type="module" src="/src/js/home.js"></script>

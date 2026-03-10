@@ -1,147 +1,79 @@
 /**
- * Flexbox Layout Styles
- * ====================
- * Flexbox utilities for common layouts
+ * Header Layout
+ * =============
+ * Scaffold-phase header structure.
+ *
+ * The active header appearance (dark bg, sticky, BEM elements) is defined
+ * in startup.scss and takes effect immediately. Styles here represent the
+ * final implementation target — move startup.scss rules here once header.js
+ * renders the header dynamically.
+ *
+ * HTML classes in use: .header, .header__inner, .header__logo,
+ *   .header__nav, .header__controls, .header__burger
+ * Image classes: .nav-logo, .logo-link
  */
 
-.flex {
-  display: flex;
+// ==================== LOGO ====================
+// Used in all three page HTML files via <img class="nav-logo">.
+.nav-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
-.flex-column {
-  @include flex-column;
-}
-
-.flex-center {
-  @include flex-center;
-}
-
-.flex-between {
-  @include flex-between;
-}
-
-// Alignment
-.items-start {
-  align-items: flex-start;
-}
-
-.items-center {
+.logo-link {
+  display: inline-flex;
   align-items: center;
+  text-decoration: none;
 }
 
-.items-end {
-  align-items: flex-end;
+// ==================== HEADER STRUCTURE ====================
+// Scaffold styles — active appearance overridden by startup.scss.
+// Implement final styles here when moving off startup.scss.
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-dropdown;
+  background-color: $color-dark-surface;
+  border-bottom: 1px solid $color-gray-700;
 }
 
-.items-stretch {
-  align-items: stretch;
+.header__inner {
+  @include flex-between;
+  padding: $spacing-md 0;
 }
 
-// Justify content
-.justify-start {
-  justify-content: flex-start;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.justify-around {
-  justify-content: space-around;
-}
-
-.justify-evenly {
-  justify-content: space-evenly;
-}
-
-// Flex direction
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-col {
-  flex-direction: column;
-}
-
-.flex-row-reverse {
-  flex-direction: row-reverse;
-}
-
-.flex-col-reverse {
-  flex-direction: column-reverse;
-}
-
-// Flex wrap
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.flex-nowrap {
-  flex-wrap: nowrap;
-}
-
-.flex-wrap-reverse {
-  flex-wrap: wrap-reverse;
-}
-
-// Flex grow/shrink
-.flex-1 {
-  flex: 1 1 0%;
-}
-
-.flex-auto {
-  flex: 1 1 auto;
-}
-
-.flex-none {
-  flex: none;
-}
-
-.flex-grow {
-  flex-grow: 1;
-}
-
-.flex-shrink {
-  flex-shrink: 1;
-}
-
-.flex-grow-0 {
-  flex-grow: 0;
-}
-
-.flex-shrink-0 {
-  flex-shrink: 0;
-}
-
-// Gap on flex
-.gap-0 {
-  gap: 0;
-}
-
-.gap-xs {
-  gap: $spacing-xs;
-}
-
-.gap-sm {
-  gap: $spacing-sm;
-}
-
-.gap-md {
-  gap: $spacing-md;
-}
-
-.gap-lg {
-  gap: $spacing-lg;
-}
-
-.gap-xl {
+.header__nav {
+  display: flex;
   gap: $spacing-xl;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  margin-left: auto;
+}
+
+.header__burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $spacing-sm;
+  color: $color-dark-text;
+
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

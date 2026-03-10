@@ -12,7 +12,7 @@ import * as refs from '../../utils/refs.js';
 export function initMobileMenu() {
   console.log('Mobile menu initialized');
   
-  if (!refs.menuToggle || !refs.closeMenu || !refs.mobileMenu) {
+  if (!refs.menuToggle || !refs.mobileMenu) {
     return;
   }
 

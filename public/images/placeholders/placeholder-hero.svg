@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#004e89;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0.8" />
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="3" fill="#444" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="url(#heroGrad)"/>
+  <rect width="1200" height="600" fill="url(#dots)"/>
+  <rect x="50" y="50" width="1100" height="500" fill="none" stroke="#666" stroke-width="3"/>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#fff" text-anchor="middle" dominant-baseline="middle">Hero Section</text>
+  <text x="600" y="340" font-family="Arial, sans-serif" font-size="28" fill="#ccc" text-anchor="middle" dominant-baseline="middle">1200 × 600</text>
+</svg>

@@ -1,22 +1,14 @@
 /**
  * Button Component Styles
  * =======================
- * Button and button-like element styles
+ * Named button classes only — no element-level overrides.
+ * Bare <button> elements are reset in reset.scss via @include button-reset.
+ * Apply .button and modifier classes from JS-rendered UI components.
  */
 
-.button,
-button,
-input[type='button'],
-input[type='submit'],
-input[type='reset'] {
+// Base named class — extend this for all JS-rendered buttons
+.button {
   @extend %button-base;
-  background-color: $color-primary;
-  color: $color-white;
-
-  &:hover {
-    background-color: $color-primary-dark;
-  }
-
   @include focus-visible;
 }
 

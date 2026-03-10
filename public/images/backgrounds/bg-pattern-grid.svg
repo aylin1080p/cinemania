@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <pattern id="gridPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#444" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#0f0f0f"/>
+  <rect width="400" height="400" fill="url(#gridPattern)"/>
+  <text x="200" y="200" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">[Manual Export Required from Figma]</text>
+</svg>

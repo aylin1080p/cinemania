@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100">
+  <path d="M 0 50 Q 300 0 600 50 T 1200 50 L 1200 100 L 0 100 Z" fill="#1a1a1a" opacity="0.8"/>
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle">[Manual Export Required from Figma]</text>
+</svg>

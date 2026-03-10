@@ -1,37 +1,51 @@
 /**
  * Home Page Entry Point
  * =====================
- * Initializes the home page
- * Displays hero section, trending movies, and upcoming releases
+ * Boots the home page in module order.
+ * Sections: Hero → Weekly Trends → Upcoming This Month
+ *
+ * Each import corresponds to one section owner.
+ * Implement the init function in the relevant module file.
  */
 
 import '../sass/index.scss';
 
-/**
- * Initialize home page
- */
-function initHomePage() {
-  console.log('🏠 Home Page Initializing...');
-  
-  // Show page sections
-  const heroSection = document.getElementById('hero');
-  const trendingSection = document.getElementById('weekly-trends');
-  const upcomingSection = document.getElementById('upcoming');
-  
-  if (heroSection) {
-    console.log('✓ Hero section loaded');
-  }
-  if (trendingSection) {
-    console.log('✓ Weekly trends section loaded');
-  }
-  if (upcomingSection) {
-    console.log('✓ Upcoming releases section loaded');
-  }
-  
-  console.log('✓ Home page initialized successfully');
+import { initHeader }       from './modules/header.js';
+import { initMobileMenu }   from './modules/mobile-menu.js';
+import { initHero }         from './modules/hero.js';
+import { initWeeklyTrends } from './modules/weekly-trends.js';
+import { initUpcoming }     from './modules/upcoming.js';
+import { initFooter }       from './modules/footer.js';
+
+async function initHomePage() {
+  console.log('[home] booting');
+
+  // TODO: owner → header.js
+  // Renders logo, nav links, theme toggle, burger button.
+  initHeader();
+
+  // TODO: owner → mobile-menu.js
+  // Wires burger button to slide-in nav panel.
+  initMobileMenu();
+
+  // TODO: owner → hero.js
+  // Fetches a featured movie from TMDB and renders backdrop + content overlay.
+  await initHero();
+
+  // TODO: owner → weekly-trends.js
+  // Fetches trending movies for the week and renders the horizontal strip.
+  await initWeeklyTrends();
+
+  // TODO: owner → upcoming.js
+  // Fetches the next upcoming release and renders poster + detail panel.
+  await initUpcoming();
+
+  // TODO: owner → footer.js
+  // Renders footer content and links.
+  initFooter();
 }
 
-// Initialize when DOM is ready
+// Module scripts are deferred — guard handles the rare edge case.
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initHomePage);
 } else {

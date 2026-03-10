@@ -1,94 +1,46 @@
 /**
- * Header Layout
+ * Footer Layout
  * =============
- * Main header navigation styles
+ * Scaffold-phase footer structure.
+ *
+ * The active footer appearance is defined in startup.scss.
+ * Implement the multi-column footer layout here once footer.js renders content.
+ *
+ * HTML classes in use: .footer
+ * Future classes (add when footer.js renders): .footer__inner, .footer__links,
+ *   .footer__copyright
  */
 
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: $color-white;
-  box-shadow: $shadow-md;
+// ==================== FOOTER STRUCTURE ====================
+// Scaffold styles — active appearance overridden by startup.scss.
 
-  [data-theme='dark'] & {
-    background-color: $color-dark-surface;
-  }
+.footer {
+  background-color: $color-dark-surface;
+  border-top: 1px solid $color-gray-700;
+  margin-top: $spacing-xxl;
 }
 
-.header__container {
-  @extend %container;
-  @include flex-between;
-  padding: $spacing-md;
-}
+// ==================== FUTURE: multi-column layout ====================
+// Uncomment and implement when footer.js renders full content.
 
-.header__logo {
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-bold;
-  color: $color-primary;
-  text-decoration: none;
-  @include animate(color);
-
-  &:hover {
-    color: $color-primary-dark;
-  }
-}
-
-.header__nav {
-  display: none;
-
-  @include respond-to('md') {
-    display: flex;
-    gap: $spacing-lg;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.header__nav-item {
-  @include flex-center;
-}
-
-.header__nav-link {
-  @extend %link;
-  font-weight: $font-weight-medium;
-  color: $color-gray-700;
-
-  [data-theme='dark'] & {
-    color: $color-gray-300;
-  }
-
-  &:hover,
-  &.active {
-    color: $color-primary;
-  }
-}
-
-.header__menu-toggle {
-  @include button-reset;
-  display: flex;
-  flex-direction: column;
-  gap: $spacing-xs;
-  cursor: pointer;
-
-  @include respond-to('md') {
-    display: none;
-  }
-
-  span {
-    width: 24px;
-    height: 2px;
-    background-color: $color-gray-700;
-    border-radius: 1px;
-    @include animate(background-color);
-
-    [data-theme='dark'] & {
-      background-color: $color-gray-300;
-    }
-  }
-
-  &:hover span {
-    background-color: $color-primary;
-  }
-}
+// .footer__inner {
+//   @extend %container;
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   gap: $spacing-lg;
+//   padding: $spacing-xxl 0;
+//
+//   @include respond-to('md') {
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
+//
+// .footer__copyright {
+//   border-top: 1px solid rgba($color-white, 0.1);
+//   padding-top: $spacing-lg;
+//   text-align: center;
+//   color: $color-gray-400;
+//   font-size: $font-size-sm;
+//
+//   p { margin: 0; }
+// }

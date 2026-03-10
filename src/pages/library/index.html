@@ -8,57 +8,63 @@
 </head>
 <body>
   <div id="root">
-    <header id="header" class="header-main">
+
+    <!-- [owner: unassigned] → header.js -->
+    <header id="header" class="header" data-dev="Header Section">
       <div class="container">
-        <div class="header-content">
-          <h1 class="header-title"><a href="/" class="logo-link">Cinemania</a></h1>
-          <nav class="header-nav">
+        <div class="header__inner">
+          <a href="/" class="header__logo logo-link">
+            <img src="/images/logos/logo-main.svg" alt="Cinemania" class="nav-logo">
+          </a>
+          <nav class="header__nav">
             <a href="/src/pages/home/" class="nav-link">Home</a>
             <a href="/src/pages/catalog/" class="nav-link">Catalog</a>
             <a href="/src/pages/library/" class="nav-link active">My Library</a>
           </nav>
+          <div class="header__controls">
+            <!-- theme toggle rendered by header.js -->
+          </div>
+          <button class="header__burger" id="menuToggle" aria-label="Open menu">
+            <!-- burger icon rendered by header.js -->
+          </button>
         </div>
       </div>
     </header>
 
-    <nav id="mobile-menu" class="mobile-menu"></nav>
-    
+    <!-- [owner: unassigned] → mobile-menu.js -->
+    <div id="mobile-menu" class="mobile-menu" data-dev="Mobile Menu"></div>
+
     <main id="main">
-      <!-- Hero section -->
-      <section id="hero" class="hero">
+
+      <!-- [owner: unassigned] → library-list.js -->
+      <!-- WATCHED / QUEUE tab switcher — no hero on this page -->
+      <section id="library-tabs" class="library-tabs" data-dev="Library Tabs Section">
         <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">My Library</h1>
-            <p class="hero-subtitle">Your saved movies and watchlist</p>
+          <div class="library-tabs__controls" id="libraryTabControls">
+            <!-- WATCHED and QUEUE tab buttons rendered by library-list.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Library list -->
-      <section id="library-list" class="library-list">
+
+      <!-- [owner: unassigned] → library-list.js -->
+      <!-- Grid of saved movies for the active tab (Watched or Queue) -->
+      <section id="library-list" class="library-list" data-dev="Library List Section">
         <div class="container">
-          <div class="movies-grid placeholder">
-            <div class="movie-card-placeholder">Saved Movie 1</div>
-            <div class="movie-card-placeholder">Saved Movie 2</div>
-            <div class="movie-card-placeholder">Saved Movie 3</div>
-            <div class="movie-card-placeholder">Saved Movie 4</div>
+          <div class="movies-grid" id="libraryListGrid">
+            <!-- movie cards rendered by library-list.js -->
           </div>
         </div>
       </section>
-      
-      <!-- Load more -->
-      <section id="load-more" class="load-more-section">
-        <div class="container">
-          <button class="load-more-btn placeholder">Load More Movies</button>
-        </div>
-      </section>
+
     </main>
-    
-    <footer id="footer" class="footer">
+
+    <!-- [owner: unassigned] → footer.js -->
+    <footer id="footer" class="footer" data-dev="Footer Section">
       <div class="container">
-        <p class="footer-text">&copy; 2024 Cinemania. All rights reserved.</p>
+        <!-- footer content rendered by footer.js -->
       </div>
     </footer>
+
   </div>
 
   <script type="module" src="/src/js/library.js"></script>
